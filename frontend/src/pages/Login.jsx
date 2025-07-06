@@ -1,31 +1,31 @@
-import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { useAuth } from '../contexts/AuthContext'
-import { toast } from 'react-toastify'
-import { Mail, Lock, LogIn, Eye, EyeOff } from 'lucide-react'
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
+import { toast } from "react-toastify";
+import { Mail, Lock, LogIn, Eye, EyeOff } from "lucide-react";
 
 const Login = () => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [showPassword, setShowPassword] = useState(false)
-  const [loading, setLoading] = useState(false)
-  const { login } = useAuth()
-  const navigate = useNavigate()
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const { login } = useAuth();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    setLoading(true)
+    e.preventDefault();
+    setLoading(true);
 
     try {
-      await login(email, password)
-      toast.success('Welcome back! Successfully logged in.')
-      navigate('/dashboard')
+      await login(email, password);
+      toast.success("Welcome back! Successfully logged in.");
+      navigate("/dashboard");
     } catch (error) {
-      toast.error(error.message || 'Login failed. Please try again.')
+      toast.error(error.message || "Login failed. Please try again.");
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-primary-50">
@@ -47,7 +47,10 @@ const Login = () => {
         <div className="card p-8">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
                 Email address
               </label>
               <div className="relative">
@@ -69,7 +72,10 @@ const Login = () => {
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
                 Password
               </label>
               <div className="relative">
@@ -79,7 +85,7 @@ const Login = () => {
                 <input
                   id="password"
                   name="password"
-                  type={showPassword ? 'text' : 'password'}
+                  type={showPassword ? "text" : "password"}
                   autoComplete="current-password"
                   required
                   value={password}
@@ -124,7 +130,7 @@ const Login = () => {
 
           <div className="mt-6 text-center">
             <p className="text-sm text-gray-600">
-              Don't have an account?{' '}
+              Don't have an account?{" "}
               <Link
                 to="/register"
                 className="font-medium text-primary-900 hover:text-primary-800 transition-colors duration-200"
@@ -137,15 +143,21 @@ const Login = () => {
 
         {/* Demo credentials */}
         <div className="card p-4 bg-blue-50 border-blue-200">
-          <h3 className="text-sm font-medium text-blue-900 mb-2">Demo Credentials</h3>
+          <h3 className="text-sm font-medium text-blue-900 mb-2">
+            Demo Credentials
+          </h3>
           <div className="text-xs text-blue-700 space-y-1">
-            <p><strong>Email:</strong> admin@techcorp.com</p>
-            <p><strong>Password:</strong> password123</p>
+            <p>
+              <strong>Email:</strong> qwertyuiop@gmail.com
+            </p>
+            <p>
+              <strong>Password:</strong> qwertyuiop
+            </p>
           </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
