@@ -1,4 +1,4 @@
-const API_URL = "https://protender-backend.onrender.com/";
+const API_URL = "https://protender-backend.onrender.com/api" || 'http://localhost:5000/api'
 
 class ApiService {
   constructor() {
